@@ -7,6 +7,10 @@
     <title>Members Only</title>
 </head>
 <body>
+    <% if (locals.user) {%>
+    <h1>WELCOME BACK <%= user.username %></h1>
+    <a href="/log-out">LOG OUT</a>
+    <% } else {%>
     <div class="header">
         <ul class="nav">
             <li><a href="/">Home</a></li>
@@ -19,6 +23,7 @@
         <div class="grid">
         </div>
     </div>
+     <% } %>
     <div class="footer">
         <p>© 2025 Members Only</p>
 </body>
