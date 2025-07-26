@@ -11,4 +11,8 @@ const addUser = async (req, res) => {
   res.redirect('/');
 }
 
-module.exports = { addUser };
+const render = (req, res) => {
+    res.render("register");
+};
+
+module.exports = { addUser, render };

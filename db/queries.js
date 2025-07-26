@@ -7,7 +7,7 @@ const pool = require("./pool");
 
 async function addUser([firstName, lastName, username, email, password]) {
     await pool.query(
-    `INSERT INTO users (firstName, lastName, username, email, password)
+    `INSERT INTO users (first_name, last_name, username, email, password)
      VALUES ($1, $2, $3, $4, $5)`,
     [firstName, lastName, username, email, password]
   );

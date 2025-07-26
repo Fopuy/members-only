@@ -15,9 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
     res.render("index")
 });
-app.get("/register", (req, res) => {
-    res.render("register");
-});
+const addUserRouter = require("./routers/addUserRouter");
+app.use("/register", addUserRouter);
 app.get("/login", (req, res) => {
     res.render("login");
 });
