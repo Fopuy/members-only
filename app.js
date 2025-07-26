@@ -5,6 +5,7 @@ const passport = require("passport");
 const session = require("express-session");
 const bcrypt = require("bcrypt");
 const LocalStrategy = require("passport-local").Strategy;
+const addUserRouter = require("./routers/addUserRouter");
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -15,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
     res.render("index")
 });
-const addUserRouter = require("./routers/addUserRouter");
+
 app.use("/register", addUserRouter);
 app.get("/login", (req, res) => {
     res.render("login");
