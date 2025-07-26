@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="styles.css" />
+  <title>Register - Members Only</title>
+</head>
+<body>
+    <div class="header">
+      <ul class="nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </div>
+    <div class="login-wrapper">
+      <div class="login-box">
+        <h1>Register</h1>
+        <form action="/register" method="POST">
+          <label for="firstName">First name:</label>
+          <input type="text" id="firstName" name="firstName" required />
+
+          <label for="lastName">Last name:</label>
+          <input type="text" id="lastName" name="lastName" required />
+
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required />
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+
+          <label for="confirm-password">Confirm Password</label>
+          <input type="password" id="confirm-password" name="confirm_password" required />
+
+          <button type="submit" class="btn-primary">Register</button>
+        </form>
+
+        <button onclick="location.href='/'" class="btn-secondary">Back to home</button>
+
+        <p class="signup-text">
+          Already have an account? <a href="/login">Log in here.</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer">
+      <p>© 2025 Members Only</p>
+    </div>
+</body>
+</html>
