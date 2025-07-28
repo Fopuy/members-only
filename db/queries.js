@@ -21,6 +21,14 @@ async function findUserByEmail(email){
   return result.rows[0] //returns undefined if there is no user with that email
 }
 
+async function findUserbyUsername(username) {
+  const result = await pool.query(
+    "SELECT * FROM users WHERE username = $1",
+    [username]
+  );
+  return result.rows[0];
+}
+
 //async function deleteCard(id) {
 //  await pool.query(
 //    `DELETE FROM cards WHERE id = $1`,
@@ -29,5 +37,5 @@ async function findUserByEmail(email){
 //}
 
 module.exports = {
-  addUser, findUserByEmail
+  addUser, findUserByEmail, findUserbyUsername
 };

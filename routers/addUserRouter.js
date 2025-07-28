@@ -13,8 +13,15 @@ const validateUser = [
         if (existingUser) {
             throw new Error('E-mail already in use.');
         }
-    return true;
-    })
+        return true;
+        }),
+    body('username').custom(async (value) => {
+        const existingUser = await db.findUserbyUsername(value);
+        if (existingUser) {
+            throw new Error('Username already in use.');
+        }
+        return true;
+    })    
 ]
 
 router.get('/', addUserController.render)
