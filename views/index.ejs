@@ -7,18 +7,18 @@
     <title>Members Only</title>
 </head>
 <body>
-    <% if (locals.user) {%>
-    <h1>WELCOME BACK <%= user.username %></h1>
-    <a href="/log-out">LOG OUT</a>
-    <% } else {%>
-    <div class="header">
+        <div class="header">
         <ul class="nav">
             <li><a href="/">Home</a></li>
             <li><a href="/login">Login</a></li>
             <li><a href="/register">Register</a></li>
-            <li><a href="/logout">Logout</a></li>
+            <li><a href="/log-out">Logout</a></li>
         </ul>
     </div>
+    <% if (locals.user) {%>
+    <h1>WELCOME BACK <%= user.username %></h1>
+    <a href="/log-out">LOG OUT</a>
+    <% } else {%>
     <div class="content">
         <div class="grid">
             <div class="box">
