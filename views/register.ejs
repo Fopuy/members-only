@@ -18,6 +18,13 @@
     <div class="login-wrapper">
       <div class="login-box">
         <h1>Register</h1>
+        <% if (errors.length > 0) { %>
+          <ul class="error-list">
+            <% errors.forEach(err => { %>
+              <li><%= err.msg %></li>
+            <% }) %>
+          </ul>
+        <% } %>
         <form action="/register" method="POST">
           <label for="firstName">First name:</label>
           <input type="text" id="firstName" name="firstName" required />
