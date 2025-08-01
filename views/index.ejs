@@ -7,44 +7,60 @@
     <title>Members Only</title>
 </head>
 <body>
-        <div class="header">
-        <ul class="nav">
-            <li><a href="/">Home</a></li>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/register">Register</a></li>
-            <li><a href="/log-out">Logout</a></li>
-        </ul>
-    </div>
-    <% if (locals.user) {%>
-    <h1>WELCOME BACK <%= user.username %></h1>
-    <a href="/log-out">LOG OUT</a>
-    <% } else {%>
+    <%- include('./partials/header.ejs') %>  
+    <% if (user) {%>
     <div class="content">
-        <div class="grid">
+            <div class="header-bar">
+                <h2>Messages</h2>
+                <a href="/post" class="post-button">Post Message</a>
+            </div>        
+            <div class="grid">
             <div class="box">
-                <h1>Welcome</h1>
-                <p>This is a members-only area.</p>
-            </div>
-            <div class="box">
-                <h1>Welcome</h1>
-                <p>This is a members-only area.</p>
-            </div>
-            <div class="box">
-                <h1>Welcome</h1>
-                <p>This is a members-only area.</p>
-            </div>
-            <div class="box">
-                <h1>Welcome</h1>
-                <p>This is a members-only area.</p>
-            </div>
-            <div class="box">
-                <h1>Welcome</h1>
-                <p>This is a members-only area.</p>
+                <div class="user-info"> <%= user.first_name %> <%= user.last_name %><span> @<%= user.username %></span></div>
+                <div class="divider"></div>
+                <div class="post-title">Title</div>
+                <div class="post-message">This is my message.</div>
             </div>
         </div>
     </div>
-     <% } %>
-    <div class="footer">
-        <p>© 2025 Members Only</p>
+    <% } else {%>
+    <div class="content">
+        <div class="header-bar">
+            <h2>Messages</h2>
+            <a href="/post" class="post-button">Post Message</a>
+        </div>            
+        <div class="grid">
+            <div class="box">
+                <div class="user-info">Romi Baido <span>@xXxromibaidoxXx</span></div>
+                <div class="divider"></div>
+                <div class="post-title">Lovi Poe</div>
+                <div class="post-message">I love you so much Lovi Poe!</div>
+            </div>
+            <div class="box">
+                <h1>Welcome</h1>
+                <p>This is a members-only area.</p>
+                <p>Please log-in to see messages.</p>
+            </div>
+            <div class="box">
+                <h1>Welcome</h1>
+                <p>This is a members-only area.</p>
+                <p>Please log-in to see messages.</p>
+            </div>
+            <div class="box">
+                <h1>Welcome</h1>
+                <p>This is a members-only area.</p>
+                <p>Please log-in to see messages.</p>
+            </div>
+            <div class="box">
+                <h1>Welcome</h1>
+                <p>This is a members-only area.</p>
+                <p>Please log-in to see messages.</p>
+            </div>
+        </div>
+    </div>
+     <% } %>  
+     <a href="/post" class="fab-post">+</a>
+
+     <%- include('./partials/footer.ejs') %>
 </body>
 </html>

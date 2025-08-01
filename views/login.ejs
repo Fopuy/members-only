@@ -7,38 +7,35 @@
   <title>Members Only</title>
 </head>
 <body>
-  <div class="header">
-    <ul class="nav">
-      <li><a href="/">Home</a></li>
-      <li><a href="/login">Login</a></li>
-      <li><a href="/register">Register</a></li>
-      <li><a href="/log-out">Logout</a></li>
-    </ul>
-  </div>
+    <%- include('./partials/header.ejs') %>  
+    <% if (!user) {%>
+    <div class="login-wrapper">
+      <div class="login-box">
+        <h1>Login</h1>
+        <form action="/login" method="POST">
+          <label for="username">Username or Email</label>
+          <input type="text" id="username" name="username" required />
 
-  <div class="login-wrapper">
-    <div class="login-box">
-      <h1>Login</h1>
-      <form action="/login" method="POST">
-        <label for="username">Username or Email</label>
-        <input type="text" id="username" name="username" required />
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
 
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required />
+          <button type="submit" class="btn-primary">Log in</button>
+        </form>
 
-        <button type="submit" class="btn-primary">Log in</button>
-      </form>
+        <button onclick="location.href='/'" class="btn-secondary">Back to home</button>
 
-      <button onclick="location.href='/'" class="btn-secondary">Back to home</button>
-
-      <p class="signup-text">
-        Don’t have an account? <a href="/register">Sign up here.</a>
-      </p>
+        <p class="signup-text">
+          Don’t have an account? <a href="/register">Sign up here.</a>
+        </p>
+      </div>
     </div>
-  </div> y
-
-  <div class="footer">
-    <p>© 2025 Members Only</p>
-  </div>
+    <% } else {%>
+      <div class="login-wrapper">
+        <div class="login-box">
+          <h1>Welcome!</h1>
+          <p>You are already logged in as <%= user.first_name + " " + user.last_name %>.</p> <br>
+          <button onclick="location.href='/'" class="btn-primary">Go to Home</button>
+        </div>
+      <% } %>
 </body>
 </html>

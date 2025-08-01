@@ -18,11 +18,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get("/", (req, res) => {
-    res.render("index", { user: req.user });
+    res.render("index", { user: req.user});
 });
 
 app.use("/register", addUserRouter);
 app.use("/login", loginRouter);
+
 app.get("/log-out", (req, res, next) => {
   req.logout((err) => {
     if (err) {

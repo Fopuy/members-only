@@ -45,7 +45,7 @@ const loginAuthenticate = passport.authenticate('local', {
 
 
 const render = (req, res) => {
-    res.render("login");
+    res.render("login", { user: req.user});
 };
 
 module.exports = { loginAuthenticate, render };
