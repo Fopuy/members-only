@@ -6,6 +6,7 @@ const loginRouter = require("./routers/loginRouter");
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require('passport-local').Strategy;
+const flash = require('connect-flash');
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -13,17 +14,28 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 
-app.use(session({ secret: "cats", resave: false, saveUninitialized: false }));
-app.use(passport.initialize());
-app.use(passport.session());
-
 app.get("/", (req, res) => {
     res.render("index", { user: req.user});
 });
 
+app.use(session({
+  secret: 'joshuadejesus',
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// make flash messages available in all templates
+app.use((req, res, next) => {
+  next();
+});
+
 app.use("/register", addUserRouter);
 app.use("/login", loginRouter);
-
 app.get("/log-out", (req, res, next) => {
   req.logout((err) => {
     if (err) {

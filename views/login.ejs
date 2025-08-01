@@ -8,10 +8,14 @@
 </head>
 <body>
     <%- include('./partials/header.ejs') %>  
+
     <% if (!user) {%>
     <div class="login-wrapper">
       <div class="login-box">
         <h1>Login</h1>
+        <% if (error && error.length > 0) { %>
+          <div class="error-message" style="color:red"><%= error[0] %></div>
+        <% } %>
         <form action="/login" method="POST">
           <label for="username">Username or Email</label>
           <input type="text" id="username" name="username" required />

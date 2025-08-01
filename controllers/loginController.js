@@ -3,6 +3,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
 const pool = require("../db/pool");
 
+
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
@@ -40,12 +41,13 @@ passport.deserializeUser(async (id, done) => {
 
 const loginAuthenticate = passport.authenticate('local', {
   successRedirect: '/',
-  failureRedirect: '/login'
+  failureRedirect: '/login',
+  failureFlash: true
 });
 
 
 const render = (req, res) => {
-    res.render("login", { user: req.user});
+  res.render("login", { user: req.user, error: req.flash('error') });
 };
 
 module.exports = { loginAuthenticate, render };
