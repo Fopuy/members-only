@@ -3,6 +3,7 @@ const express = require ("express");
 const app = express();
 const addUserRouter = require("./routers/addUserRouter");
 const loginRouter = require("./routers/loginRouter");
+const postRouter = require("./routers/postRouter");
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require('passport-local').Strategy;
@@ -44,6 +45,7 @@ app.get("/log-out", (req, res, next) => {
     res.redirect("/");
   });
 });
+app.use("/post", postRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
