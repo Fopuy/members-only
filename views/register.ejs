@@ -4,17 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href="styles.css" />
-  <title>Register - Members Only</title>
+  <title>Register</title>
 </head>
 <body>
-    <div class="header">
-      <ul class="nav">
-        <li><a href="/">Home</a></li>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/register">Register</a></li>
-        <li><a href="/log-out">Logout</a></li>
-      </ul>
-    </div>
+    <%- include('./partials/header.ejs') %>  
     <div class="login-wrapper">
       <div class="login-box">
         <h1>Register</h1>
@@ -54,8 +47,6 @@
         </p>
       </div>
     </div>
-    <div class="footer">
-      <p>© 2025 Members Only</p>
-    </div>
+     <%- include('./partials/footer.ejs') %>
 </body>
 </html>

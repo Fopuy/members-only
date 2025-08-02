@@ -22,7 +22,7 @@ const addUser = async (req, res) => {
 }
 
 const render = (req, res) => {
-    res.render("register", { errors: [], data: {} });
+    res.render("register", { errors: [], data: {}, user: req.user });
 };
 
 module.exports = { addUser, render };

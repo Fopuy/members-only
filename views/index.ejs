@@ -18,17 +18,13 @@
             <div class="box">
                 <div class="user-info"> <%= user.first_name %> <%= user.last_name %><span> @<%= user.username %></span></div>
                 <div class="divider"></div>
-                <div class="post-title">Title</div>
                 <div class="post-message">This is my message.</div>
             </div>
         </div>
     </div>
     <% } else {%>
     <div class="content">
-        <div class="header-bar">
-            <h2>Messages</h2>
-            <a href="/post" class="post-button">Post Message</a>
-        </div>            
+        <p style="color:rgb(253, 105, 105)"> Please login to post messages.</p>           
         <div class="grid">
             <div class="box">
                 <div class="user-info">Romi Baido <span>@xXxromibaidoxXx</span></div>
@@ -59,8 +55,6 @@
         </div>
     </div>
      <% } %>  
-     <a href="/post" class="fab-post">+</a>
-
      <%- include('./partials/footer.ejs') %>
 </body>
 </html>
