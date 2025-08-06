@@ -7,20 +7,32 @@
   <title>Login</title>
 </head>
 <body>
-    <%- include('./partials/header.ejs') %>  
+    <%- include('./partials/header.ejs') %>
+    <% if (user) {%>
     <div class="content">
       <div class="login-wrapper">
         <div class="login-box">
           <h1>Post Message</h1>
           <form action="/post" method="POST">
-            <label for="post-message">Message:</label>
-            <textarea id="post-message" name="post-message" placeholder="Type your message..."></textarea>
+            <label for="postMessage">Message:</label>
+            <textarea id="postMessage" name="postMessage" placeholder="Type your message..."></textarea>
             <button type="submit" class="btn-primary">Post</button>
           </form>
           <button onclick="location.href='/'" class="btn-secondary">Back to home</button>
         </div>
       </div>
     </div>
+    <% } else {%>
+      <div class="content">
+        <div class="login-wrapper">
+          <div class="login-box">
+            <h1>Bro!</h1>
+            <p>Please Login First.</p> <br>
+            <button onclick="location.href='/login'" class="btn-primary">Log in</button>
+          </div>
+        </div>
+      </div>
+      <% } %>
       <%- include('./partials/footer.ejs') %>
 </body>
 </html>

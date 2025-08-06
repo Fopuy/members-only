@@ -14,6 +14,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use(session({
   secret: 'joshuadejesus',
@@ -31,10 +32,10 @@ app.use((req, res, next) => {
   next();
 });
 
-
 app.get("/", (req, res) => {
     res.render("index", { user: req.user});
 });
+app.use("/post/", postRouter);
 app.use("/register", addUserRouter);
 app.use("/login", loginRouter);
 app.get("/log-out", (req, res, next) => {
@@ -45,7 +46,6 @@ app.get("/log-out", (req, res, next) => {
     res.redirect("/");
   });
 });
-app.use("/post", postRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
