@@ -24,6 +24,13 @@ async function findUserbyUsername(username) {
   return result.rows[0];
 }
 
+async function postMessage(userId, postMessage) {
+  await pool.query(
+    "INSERT INTO posts (user_id, post_message) VALUES ($1, $2)",
+    [userId, postMessage]
+  );
+}
+
 module.exports = {
-  addUser, findUserByEmail, findUserbyUsername
+  addUser, findUserByEmail, findUserbyUsername, postMessage
 };
