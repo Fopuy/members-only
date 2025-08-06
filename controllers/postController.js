@@ -1,8 +1,9 @@
 const db = require("../db/queries");
+const pool = require("../db/pool");
 
-const render = (req, res) => {
-    res.render("post", { user: req.user });
-}
+//const render = (req, res) => {
+//    res.render("post", { user: req.user });
+//}
 
 const post = async (req, res) => {
     const { postMessage } = req.body;
@@ -13,4 +14,13 @@ const post = async (req, res) => {
     res.redirect("/");
 }
 
-module.exports = { render, post };
+const getPosts = async (req, res) => {
+    const result = await pool.query("SELECT * FROM posts ORDER BY created_at DESC");
+    const posts = result.rows;
+    res.render("post", {
+      user: req.user,  
+      posts            
+    });
+}
+
+module.exports = { post, getPosts };

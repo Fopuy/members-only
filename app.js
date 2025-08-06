@@ -2,12 +2,19 @@ const path = require("node:path");
 const express = require ("express");
 const app = express();
 const addUserRouter = require("./routers/addUserRouter");
+const indexRouter = require("./routers/indexRouter");
 const loginRouter = require("./routers/loginRouter");
 const postRouter = require("./routers/postRouter");
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require('passport-local').Strategy;
 const flash = require('connect-flash');
+
+//dayjs for date formatting
+const dayjs = require('dayjs');
+const relativeTime = require('dayjs/plugin/relativeTime');
+dayjs.extend(relativeTime);
+app.locals.dayjs = dayjs;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -32,10 +39,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", (req, res) => {
-    res.render("index", { user: req.user});
-});
-app.use("/post/", postRouter);
+app.use("/", indexRouter);
+app.use("/post", postRouter);
 app.use("/register", addUserRouter);
 app.use("/login", loginRouter);
 app.get("/log-out", (req, res, next) => {

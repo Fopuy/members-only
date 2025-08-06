@@ -15,42 +15,34 @@
                 <a href="/post" class="post-button">Post Message</a>
             </div>        
             <div class="grid">
-            <div class="box">
-                <div class="user-info"> <%= user.first_name %> <%= user.last_name %><span> @<%= user.username %></span></div>
-                <div class="divider"></div>
-                <div class="post-message">This is my message.</div>
+                <% posts.forEach(post => { %>
+                <div class="box">
+                    <div class="user-info">
+                    <%= post.first_name %> <%= post.last_name %><span> @<%= post.username %></span>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="post-message">
+                    <p><%= post.post_message %></p>
+                    </div>
+
+                    <div class="post-date">
+                    <small><%= dayjs(post.created_at).fromNow() %></small>
+                    </div>
+                </div>
+                <% }) %>
             </div>
-        </div>
     </div>
     <% } else {%>
     <div class="content">
         <p style="color:rgb(253, 105, 105)"> Please login to post messages.</p>           
         <div class="grid">
             <div class="box">
-                <div class="user-info">Joshua De Jesus <span>@joshuadejesus</span></div>
+                <div class="user-info">Anonymous <span>@anon</span></div>
                 <div class="divider"></div>
                 <div class="post-title">Hello</div>
-                <div class="post-message">Hi Hello. This is a message. Thanks.</div>
-            </div>
-            <div class="box">
-                <h1>Welcome</h1>
-                <p>This is a members-only area.</p>
-                <p>Please log-in to see messages.</p>
-            </div>
-            <div class="box">
-                <h1>Welcome</h1>
-                <p>This is a members-only area.</p>
-                <p>Please log-in to see messages.</p>
-            </div>
-            <div class="box">
-                <h1>Welcome</h1>
-                <p>This is a members-only area.</p>
-                <p>Please log-in to see messages.</p>
-            </div>
-            <div class="box">
-                <h1>Welcome</h1>
-                <p>This is a members-only area.</p>
-                <p>Please log-in to see messages.</p>
+                <div class="post-message">Hi Hello, please log-in to see the messages.</div>
             </div>
         </div>
     </div>
