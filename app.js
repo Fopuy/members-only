@@ -51,6 +51,12 @@ app.get("/log-out", (req, res, next) => {
     res.redirect("/");
   });
 });
+app.use((req, res, next) => {
+  
+  res.status(404).render("404", {
+      user: req.user       
+    });
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
